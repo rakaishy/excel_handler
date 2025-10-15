@@ -30,9 +30,7 @@ This project uses GitHub Actions to automatically build Windows executables:
 
 1. Push a version tag: `git tag v1.0.0 && git push origin v1.0.0`
 2. GitHub Actions builds the Windows `.exe` automatically
-3. Download from the Releases page
-
-See `GITHUB_ACTIONS_GUIDE.md` for detailed instructions.
+3. Download from the [Releases page](../../releases)
 
 ### Manual Build
 
