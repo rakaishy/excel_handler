@@ -10,6 +10,12 @@ import subprocess
 import shutil
 from pathlib import Path
 
+# Set UTF-8 encoding for Windows console
+if sys.platform == "win32":
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+
 def print_header(message):
     """Print a formatted header."""
     print("\n" + "=" * 60)
@@ -18,11 +24,11 @@ def print_header(message):
 
 def print_success(message):
     """Print a success message."""
-    print(f"✓ {message}")
+    print(f"[OK] {message}")
 
 def print_error(message):
     """Print an error message."""
-    print(f"✗ {message}")
+    print(f"[ERROR] {message}")
 
 def print_info(message):
     """Print an info message."""
