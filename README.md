@@ -14,13 +14,25 @@ A user-friendly Python application for validating and processing Excel files, de
 
 ## Installation
 
-### For Non-Technical Users
+### For Non-Technical Users (Recommended)
+
+**Simple 3-step installation:**
+
+1. **Install Python** from [Microsoft Store](https://apps.microsoft.com/detail/9NCVDN91XZQP) or [Python.org](https://www.python.org/downloads/)
+2. **Extract the ZIP file** you received (Right-click → "Extract All...")
+3. **Double-click `RUN_EXCEL_HANDLER.bat`** to run
+
+**No security warnings, no SmartScreen blocks!** See [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md) for detailed instructions.
+
+### Alternative: Pre-built Executable
+
+If you prefer a standalone `.exe` file:
 
 1. Go to the [Releases page](../../releases)
-2. Download `Excel_Handler.exe` from the latest release
-3. Double-click the executable to run the application
+2. Download `Excel_Handler.exe`
+3. Run the executable
 
-**No installation required!** Just download and run.
+**Note:** Windows SmartScreen may show a warning (click "More info" → "Run anyway") because the executable is not digitally signed. Organizations with strict security policies may block unsigned executables.
 
 ## Building from Source
 
