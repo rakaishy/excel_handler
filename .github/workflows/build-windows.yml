@@ -1,0 +1,58 @@
+name: Build Windows Executable
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0.0, v1.0.1, etc.
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Build Windows executable
+      run: python build.py
+    
+    - name: Upload executable as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Excel_Handler-Windows
+        path: dist/Excel_Handler.exe
+        retention-days: 90
+    
+    - name: Create GitHub Release (if tagged)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/Excel_Handler.exe
+        body: |
+          ## Excel Handler - Windows Release
+          
+          ### Installation
+          1. Download `Excel_Handler.exe` below
+          2. Double-click to run
+          
+          ### Features
+          - Validates Excel files against Optix Input Template format
+          - Column and data type validation
+          - User-friendly console interface
+          
+          ### Requirements
+          - Windows 10 or later
+          - Excel files in .xlsx or .xls format
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
